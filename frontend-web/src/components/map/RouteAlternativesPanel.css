@@ -1,0 +1,254 @@
+/* frontend-web/src/components/map/RouteAlternativesPanel.css */
+
+.route-alternatives {
+  width: 100%;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.route-alternatives__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.route-alternatives__header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #343a40;
+}
+
+.route-alternatives__close {
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.route-alternatives__close:hover {
+  background-color: #e9ecef;
+  color: #343a40;
+}
+
+.route-alternatives__current {
+  background-color: #fff3cd;
+  padding: 12px 15px;
+  border-bottom: 1px solid #ffeeba;
+}
+
+.route-alternatives__current-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #856404;
+}
+
+.route-alternatives__warning-icon {
+  margin-right: 8px;
+  color: #e0a800;
+}
+
+.route-alternatives__current-details {
+  display: flex;
+  justify-content: space-between;
+  color: #5a5a5a;
+  font-size: 13px;
+}
+
+.route-alternatives__incidents {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+.route-alternatives__list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 60vh;
+  padding: 10px;
+}
+
+.route-alternatives__item {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+
+.route-alternatives__item:hover {
+  background-color: #f1f3f5;
+}
+
+.route-alternatives__item--selected {
+  border-color: #3498db;
+  background-color: #ebf5fd;
+}
+
+.route-alternatives__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.route-alternatives__item-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.route-alternatives__recommended {
+  background-color: #38b2ac;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.route-alternatives__item-score {
+  font-size: 13px;
+  color: #666;
+}
+
+.route-alternatives__item-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.route-alternatives__item-stat {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 14px;
+  color: #495057;
+}
+
+.route-alternatives__stat-value {
+  font-weight: 500;
+}
+
+.route-alternatives__stat-diff {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.route-alternatives__strengths {
+  background-color: #e6f3eb;
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.route-alternatives__strength-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #2c7a4c;
+}
+
+.route-alternatives__strength-list {
+  margin: 0;
+  padding-left: 5px;
+  list-style-type: none;
+  color: #2c7a4c;
+}
+
+.route-alternatives__strength-list li {
+  margin-bottom: 2px;
+}
+
+.route-alternatives__selected-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3498db;
+  gap: 6px;
+}
+
+.route-alternatives__actions {
+  padding: 12px 15px;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  gap: 10px;
+}
+
+.route-alternatives__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.route-alternatives__button:hover {
+  transform: translateY(-1px);
+}
+
+.route-alternatives__button:active {
+  transform: translateY(0);
+}
+
+.route-alternatives__button--primary {
+  background-color: #3498db;
+  color: white;
+  flex: 2;
+}
+
+.route-alternatives__button--primary:hover {
+  background-color: #2980b9;
+}
+
+.route-alternatives__button--secondary {
+  background-color: #f1f1f1;
+  color: #333;
+  flex: 1;
+}
+
+.route-alternatives__button--secondary:hover {
+  background-color: #e0e0e0;
+}
+
+/* Animation d'entrée */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.route-alternatives {
+  animation: slide-in 0.3s ease-out;
+}

@@ -1,0 +1,256 @@
+/* IncidentList.css - Style inspiré Waze */
+
+.incidents-container {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.incidents-header {
+  background-color: #4285F4; /* Bleu Waze */
+  color: white;
+  padding: 18px 15px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.incidents-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.incidents-count {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.incidents-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  background-color: #F8F9FA; /* Fond légèrement gris comme Waze */
+}
+
+/* Styliser la barre de défilement */
+.incidents-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.incidents-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.incidents-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.incidents-list::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Carte d'incident */
+.incident-card {
+  display: flex;
+  margin-bottom: 16px;
+  background-color: white;
+  border-radius: 14px; /* Coins arrondis style Waze */
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Ombre légère */
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.incident-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.incident-card:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.incident-type-indicator {
+  width: 5px;
+  min-height: 100%;
+}
+
+.incident-card-content {
+  flex: 1;
+  padding: 14px;
+  cursor: pointer;
+}
+
+.incident-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.incident-type {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.incident-icon {
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.incident-type-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+.incident-time {
+  font-size: 12px;
+  color: #777;
+  background-color: #f0f0f0;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.incident-body {
+  margin: 10px 0;
+}
+
+.incident-description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.incident-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.incident-reliability {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 120px;
+}
+
+.reliability-bar {
+  height: 5px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.reliability-value {
+  height: 100%;
+  transition: width 0.3s ease;
+  border-radius: 3px;
+}
+
+.reliability-percent {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.incident-votes {
+  display: flex;
+  gap: 12px;
+}
+
+.vote {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.vote.up {
+  color: #33CC66; /* Vert Waze */
+}
+
+.vote.down {
+  color: #FF453A; /* Rouge Waze */
+}
+
+.incident-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 12px;
+}
+
+.incident-action-btn {
+  background-color: #4285F4; /* Bleu Waze */
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.incident-action-btn:hover {
+  background-color: #3367D6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.incident-action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* État vide (pas d'incidents) */
+.no-incidents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  border-radius: 14px;
+  padding: 40px 20px;
+  margin: 20px;
+  text-align: center;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.no-incidents-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: #aaa;
+}
+
+.no-incidents p {
+  color: #777;
+  font-size: 16px;
+  margin: 0;
+}

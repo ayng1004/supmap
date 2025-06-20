@@ -1,0 +1,34 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  #root {
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .mapboxgl-canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .mapboxgl-ctrl-logo {
+    margin: 0 !important;
+  }
+  
+  /* Style pour le conteneur de la carte */
+  .map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  /* Style pour la vue de la carte */
+  .map-view {
+    width: 100%;
+    height: 100%;
+  }

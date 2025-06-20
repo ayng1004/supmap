@@ -1,0 +1,10 @@
+extend type Query {
+  userStats(userId: ID!): UserStats
+}
+
+type UserStats {
+  incidentCount: Int
+  confirmed: Int
+  denied: Int
+  lastReportedAt: String
+}

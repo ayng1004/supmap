@@ -1,0 +1,270 @@
+/* src/styles/global.css */
+:root {
+    --primary-color: #3887be;
+    --secondary-color: #ff9800;
+    --danger-color: #e53935;
+    --success-color: #43a047;
+    --warning-color: #fdd835;
+    --light-color: #f5f5f5;
+    --dark-color: #333333;
+    --text-color: #212121;
+    --border-color: #e0e0e0;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--light-color);
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  button, .btn {
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.1s;
+  }
+  
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2a6594;
+  }
+  
+  .btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #e68900;
+  }
+  
+  .btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+  }
+  
+  input, select, textarea {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  
+  .app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* src/components/map/MapView.css */
+  .map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .map-view {
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .map-controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    background-color: white;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: var(--shadow);
+  }
+  
+  .mapboxgl-popup {
+    max-width: 300px;
+  }
+  
+  .mapboxgl-popup-content {
+    padding: 15px;
+  }
+  
+  /* src/pages/MapPage.css */
+  .map-page {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .map-sidebar {
+    width: 350px;
+    background-color: white;
+    box-shadow: var(--shadow);
+    z-index: 2;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .search-container {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+  }
+  
+  .route-panel, .incident-panel {
+    padding: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+  }
+  
+  .checkbox, .radio {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .checkbox input, .radio input {
+    margin-right: 8px;
+  }
+  
+  .route-button, .incident-button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .incident-button {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+  }
+  
+  /* Component-specific styles */
+  .route-info {
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .route-info h3 {
+    margin-bottom: 10px;
+  }
+  
+  .route-options {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .route-option {
+    padding: 8px 12px;
+    margin-right: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .route-option.active {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .route-details {
+    margin-top: 15px;
+  }
+  
+  .route-detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .route-detail .icon {
+    margin-right: 8px;
+  }
+  
+  .incident-marker {
+    width: 25px;
+    height: 25px;
+    background-color: var(--danger-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .incident-type-accident {
+    background-color: var(--danger-color);
+  }
+  
+  .incident-type-traffic {
+    background-color: var(--warning-color);
+  }
+  
+  .incident-type-closure {
+    background-color: var(--dark-color);
+  }
+  
+  .incident-type-police {
+    background-color: var(--primary-color);
+  }
+  
+  .incident-type-hazard {
+    background-color: var(--secondary-color);
+  }

@@ -1,0 +1,162 @@
+/* IncidentMarker.css - Style inspiré Waze */
+
+.incident-marker {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: white;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 3px solid white;
+  z-index: 10;
+}
+
+.incident-marker:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid white;
+  z-index: -1;
+}
+
+.incident-marker:hover {
+  transform: scale(1.15) translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  z-index: 20;
+}
+
+.incident-marker:active {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Types d'incidents avec couleurs Waze */
+.incident-marker.type-accident {
+  background-color: #FF453A; /* Rouge Waze */
+}
+
+.incident-marker.type-traffic {
+  background-color: #FF9500; /* Orange Waze */
+}
+
+.incident-marker.type-closure {
+  background-color: #4285F4; /* Bleu Waze */
+}
+
+.incident-marker.type-police {
+  background-color: #34C759; /* Vert Waze */
+}
+
+.incident-marker.type-hazard {
+  background-color: #AF52DE; /* Violet Waze */
+}
+
+/* Animations pulsantes pour attirer l'attention */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.incident-marker.recent {
+  animation: pulse 2s infinite;
+}
+
+.incident-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.incident-time {
+  position: absolute;
+  bottom: -10px;
+  right: -5px;
+  background-color: white;
+  color: #333;
+  border-radius: 10px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 30;
+  border: 1px solid #eee;
+}
+
+.incident-votes {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  z-index: 30;
+  border: 1px solid #eee;
+}
+
+.vote-up {
+  color: #33CC66; /* Vert Waze */
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.vote-down {
+  color: #FF453A; /* Rouge Waze */
+  display: flex;
+  align-items: center;
+}
+
+/* Badge de fiabilité */
+.reliability-badge {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+  z-index: 30;
+}
+
+.reliability-badge.high {
+  background-color: #33CC66; /* Vert Waze */
+  color: white;
+}
+
+.reliability-badge.medium {
+  background-color: #FF9500; /* Orange Waze */
+  color: white;
+}
+
+.reliability-badge.low {
+  background-color: #FF453A; /* Rouge Waze */
+  color: white;
+}

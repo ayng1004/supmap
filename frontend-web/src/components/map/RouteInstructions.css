@@ -1,0 +1,73 @@
+/* Mode sombre */
+body.dark-mode .route-instructions {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .route-instructions h3 {
+  color: #fff;
+}
+
+body.dark-mode .route-instructions .step-item {
+  background-color: #444; /* Fond sombre pour les étapes */
+  color: #fff; /* Texte clair */
+  border: 3px solid #555;
+}
+
+body.dark-mode .route-instructions .steps-list .step-item .step-index {
+  background-color: #2ecc71; /* Vert clair pour le numéro de l'étape */
+}
+
+body.dark-mode .route-instructions .steps-list .step-item .step-instruction {
+  color: #ccc; /* Texte des instructions en gris clair */
+}
+
+body.dark-mode .route-instructions .steps-list .step-item .step-meta {
+  color: #888; /* Distance et durée en gris plus clair */
+}
+
+body.dark-mode .route-instructions .button {
+  background-color: #444; /* Boutons en fond sombre */
+  color: white;
+}
+
+body.dark-mode .route-instructions .button:hover {
+  background-color: #2ecc71; /* Vert plus clair au survol */
+}
+
+/* Mode clair (par défaut) */
+.route-instructions {
+  background-color: white;
+  color: #333;
+}
+
+.route-instructions h3 {
+  color: #333;
+}
+
+.route-instructions .step-item {
+  background-color: white;
+  color: #333;
+  border: 3px solid transparent;
+}
+
+.route-instructions .steps-list .step-item .step-index {
+  background-color: #3887be; /* Bleu clair pour le numéro de l'étape */
+}
+
+.route-instructions .steps-list .step-item .step-instruction {
+  color: #333; /* Texte des instructions en noir */
+}
+
+.route-instructions .steps-list .step-item .step-meta {
+  color: #666; /* Distance et durée en gris */
+}
+
+.route-instructions .button {
+  background-color: #3887be;
+  color: white;
+}
+
+.route-instructions .button:hover {
+  background-color: #2ab057;
+}

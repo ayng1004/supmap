@@ -1,0 +1,168 @@
+/* NearbyIncidentsCard.css */
+.nearby-incidents-card {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.card-header {
+  background-color: #2979ff;
+  color: white;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.loading, .error, .no-incidents {
+  text-align: center;
+  padding: 20px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.error {
+  color: #f44336;
+}
+
+.safe-area {
+  display: block;
+  margin-top: 10px;
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.incidents-summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.incident-count, .common-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.count, .type-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2979ff;
+}
+
+.label {
+  font-size: 12px;
+  color: #777;
+  margin-top: 4px;
+}
+
+.incidents-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.incident-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.incident-item:last-child {
+  border-bottom: none;
+}
+
+.incident-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ffcdd2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: #e53935;
+}
+
+.incident-item.accident .incident-icon {
+  background-color: #ffcdd2;
+  color: #e53935;
+}
+
+.incident-item.traffic_jam .incident-icon {
+  background-color: #ffecb3;
+  color: #ff9800;
+}
+
+.incident-item.road_closed .incident-icon {
+  background-color: #e1bee7;
+  color: #8e24aa;
+}
+
+.incident-item.construction .incident-icon {
+  background-color: #ffd180;
+  color: #ff8f00;
+}
+
+.incident-item.hazard .incident-icon {
+  background-color: #ffccbc;
+  color: #ff5722;
+}
+
+.incident-details {
+  flex: 1;
+}
+
+.incident-type {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.incident-time {
+  font-size: 12px;
+  color: #777;
+  margin-top: 2px;
+}
+
+.learn-more-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #f5f7fa;
+  border: none;
+  border-radius: 8px;
+  color: #2979ff;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.learn-more-btn:hover {
+  background-color: #e3f2fd;
+}

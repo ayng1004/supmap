@@ -1,0 +1,53 @@
+buildscript {
+    ext {
+        buildToolsVersion = "35.0.0"
+        minSdkVersion = 24
+        compileSdkVersion = 35
+        targetSdkVersion = 34
+        kotlinVersion = "1.7.20" // ✅ Compatible avec compose-compiler:1.3.2
+        println "📌 Using Kotlin version: $kotlinVersion"
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.2.1")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://api.mapbox.com/downloads/v2/releases/maven' }
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+
+// 🔧 Forcer Kotlin partout à 1.7.20
+configurations.all {
+    resolutionStrategy.eachDependency { details ->
+        if (details.requested.group == 'org.jetbrains.kotlin') {
+            println "⚠️ Forcing Kotlin version ${details.requested.name} to $kotlinVersion"
+            details.useVersion "$kotlinVersion"
+        }
+    }
+}
+
+// 🚫 Désactiver Jetpack Compose dans tous les sous-projets
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty("android")) {
+            project.android {
+                buildFeatures {
+                    compose false
+                }
+            }
+        }
+    }
+}

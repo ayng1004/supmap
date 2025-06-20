@@ -1,0 +1,203 @@
+version: '3.8'
+
+services:
+  auth-db:
+    image: postgis/postgis:14-3.2
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: auth_db
+    volumes:
+      - auth_postgres_data:/var/lib/postgresql/data
+      - ./database/auth_init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d auth_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend-network
+
+  incident-db:
+    image: postgis/postgis:14-3.2
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: incident_db
+    volumes:
+      - incident_postgres_data:/var/lib/postgresql/data
+      - ./database/incident_init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5434:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d incident_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend-network
+
+  route-db:
+    image: postgis/postgis:14-3.2
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: route_db
+    volumes:
+      - route_postgres_data:/var/lib/postgresql/data
+      - ./database/route_init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5435:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d route_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend-network
+
+  api-gateway:
+    build: ./backend/api-gateway
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      JWT_SECRET: ${JWT_SECRET}
+      CORS_ORIGIN: ${CORS_ORIGIN}
+      AUTH_SERVICE_URL: http://auth-service:3002
+      INCIDENT_SERVICE_URL: http://incident-service:3003
+      ROUTE_SERVICE_URL: http://route-service:3004
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY}
+    ports:
+      - "3001:3001"
+    depends_on:
+      - auth-service
+      - incident-service
+      - route-service
+    volumes:
+      - ./backend/api-gateway:/app
+      - /app/node_modules
+    networks:
+      - backend-network
+      - frontend-network
+
+  auth-service:
+    build: ./backend/services/auth-service
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      DB_HOST: auth-db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: auth_db
+      JWT_SECRET: ${JWT_SECRET}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      FACEBOOK_APP_ID: ${FACEBOOK_APP_ID}
+      FACEBOOK_APP_SECRET: ${FACEBOOK_APP_SECRET}
+      INCIDENT_SERVICE_URL: http://incident-service:3003
+      ROUTE_SERVICE_URL: http://route-service:3004
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY}
+    ports:
+      - "3002:3002"
+    depends_on:
+      auth-db:
+        condition: service_healthy
+    volumes:
+      - ./backend/services/auth-service:/app
+      - /app/node_modules
+    networks:
+      - backend-network
+
+  incident-service:
+    build: ./backend/services/incident-service
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      DB_HOST: incident-db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: incident_db
+      JWT_SECRET: ${JWT_SECRET}
+      AUTH_SERVICE_URL: http://auth-service:3002
+      API_GATEWAY_URL: http://api-gateway:3001
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY}
+    ports:
+      - "3003:3003"
+    depends_on:
+      incident-db:
+        condition: service_healthy
+    volumes:
+      - ./backend/services/incident-service:/app
+      - /app/node_modules
+    networks:
+      - backend-network
+
+  route-service:
+    build: ./backend/services/route-service
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      DB_HOST: route-db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: route_db
+      JWT_SECRET: ${JWT_SECRET}
+      MAPBOX_API_KEY: ${MAPBOX_API_KEY}
+      AUTH_SERVICE_URL: http://auth-service:3002
+      API_GATEWAY_URL: http://api-gateway:3001
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY}
+    ports:
+      - "3004:3004"
+    depends_on:
+      route-db:
+        condition: service_healthy
+    volumes:
+      - ./backend/services/route-service:/app
+      - /app/node_modules
+    networks:
+      - backend-network
+
+  frontend-web:
+    build: ./frontend-web
+    environment:
+      REACT_APP_API_URL: ${API_URL}
+      REACT_APP_WS_URL: ${WS_URL}
+      REACT_APP_MAPBOX_ACCESS_TOKEN: ${MAPBOX_API_KEY}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-gateway
+    volumes:
+      - ./frontend-web:/app
+      - /app/node_modules
+    networks:
+      - frontend-network
+
+ 
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - auth-db
+      - incident-db
+      - route-db
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+  frontend-network:
+
+volumes:
+  auth_postgres_data:
+  incident_postgres_data:
+  route_postgres_data:

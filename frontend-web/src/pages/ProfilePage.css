@@ -1,0 +1,482 @@
+/* ProfilePage.css - Style Waze complet */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+
+:root {
+  --waze-primary: #4A89F3;
+  --waze-primary-dark: #176BEF;
+  --waze-secondary: #33CCCC;
+  --waze-green: #09CF83;
+  --waze-red: #FF667F;
+  --waze-orange: #F5B841;
+  --waze-purple: #9A6AFF;
+  --waze-black: #0F1621;
+  --waze-text: #333C47;
+  --waze-text-light: #6B778C;
+  --waze-border: #E3E8EF;
+  --waze-light-bg: #F7F9FC;
+  --waze-white: #FFFFFF;
+  --waze-shadow: 0 4px 12px rgba(74, 137, 243, 0.15);
+}
+
+body {
+  background-color: var(--waze-light-bg);
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--waze-text);
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ---------- Container principal ---------- */
+.waze-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+/* ---------- Header Waze ---------- */
+.waze-header {
+  text-align: center;
+  padding: 30px 0;
+  position: relative;
+}
+
+.waze-logo {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--waze-primary);
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.waze-logo:before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--waze-primary);
+  border-radius: 50%;
+  right: -24px;
+  top: 10px;
+  opacity: 0.25;
+}
+
+.waze-logo:after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--waze-primary);
+  border-radius: 50%;
+  left: -18px;
+  bottom: 8px;
+  opacity: 0.15;
+}
+
+.waze-header-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--waze-text-light);
+  margin: 0;
+}
+
+/* ---------- Carte du profil ---------- */
+.waze-profile-card {
+  background-color: var(--waze-white);
+  border-radius: 24px;
+  padding: 0;
+  margin-bottom: 30px;
+  box-shadow: var(--waze-shadow);
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-header {
+  background-color: var(--waze-primary);
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.waze-route {
+  position: absolute;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+.route-1 {
+  width: 60%;
+  bottom: 30px;
+  left: -10%;
+  transform: rotate(3deg);
+}
+
+.route-2 {
+  width: 40%;
+  top: 40px;
+  right: -5%;
+  transform: rotate(-8deg);
+}
+
+.route-3 {
+  width: 30%;
+  top: 60px;
+  left: 40%;
+  transform: rotate(5deg);
+}
+
+.waze-pin {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--waze-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--waze-primary);
+  font-size: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pin-1 {
+  top: 30px;
+  left: 20%;
+}
+
+.pin-2 {
+  bottom: 20px;
+  right: 30%;
+}
+
+.profile-content {
+  padding: 0 30px 30px;
+  position: relative;
+}
+
+.profile-avatar-wrapper {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 4px solid var(--waze-white);
+  background-color: var(--waze-primary);
+  position: absolute;
+  top: -45px;
+  left: 30px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  color: var(--waze-white);
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--waze-black);
+  margin: 0 0 5px;
+}
+
+.profile-email {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--waze-text-light);
+  font-size: 15px;
+  margin: 0;
+}
+
+.profile-email svg {
+  color: var(--waze-primary);
+}
+
+/* ---------- Tabs de navigation ---------- */
+.waze-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--waze-border);
+  margin-bottom: 24px;
+}
+
+.waze-tab {
+  padding: 12px 20px;
+  font-weight: 600;
+  color: var(--waze-text-light);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.3s ease;
+}
+
+.waze-tab.active {
+  color: var(--waze-primary);
+  border-bottom-color: var(--waze-primary);
+}
+
+.waze-tab:hover:not(.active) {
+  color: var(--waze-text);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* ---------- Sections de formulaire ---------- */
+.waze-form-section {
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--waze-primary);
+  color: var(--waze-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.icon-security {
+  background-color: var(--waze-green);
+}
+
+.section-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--waze-text);
+}
+
+/* ---------- Formulaires ---------- */
+.waze-form-group {
+  margin-bottom: 20px;
+}
+
+.waze-form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--waze-text-light);
+  margin-bottom: 8px;
+}
+
+.waze-form-control {
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 15px;
+  border: 2px solid var(--waze-border);
+  border-radius: 12px;
+  background-color: var(--waze-white);
+  color: var(--waze-text);
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.waze-form-control:focus {
+  outline: none;
+  border-color: var(--waze-primary);
+  box-shadow: 0 0 0 3px rgba(74, 137, 243, 0.15);
+}
+
+.waze-form-control:disabled {
+  background-color: var(--waze-light-bg);
+  cursor: not-allowed;
+  color: var(--waze-text-light);
+}
+
+/* ---------- Boutons ---------- */
+.waze-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 8px;
+}
+
+.waze-btn-primary {
+  background-color: var(--waze-primary);
+  color: var(--waze-white);
+}
+
+.waze-btn-primary:hover {
+  background-color: var(--waze-primary-dark);
+  box-shadow: 0 4px 12px rgba(74, 137, 243, 0.3);
+}
+
+.waze-btn-success {
+  background-color: var(--waze-green);
+  color: var(--waze-white);
+}
+
+.waze-btn-success:hover {
+  background-color: #06b673;
+  box-shadow: 0 4px 12px rgba(9, 207, 131, 0.3);
+}
+
+.waze-btn-light {
+  background-color: var(--waze-light-bg);
+  color: var(--waze-text);
+  border: 1px solid var(--waze-border);
+}
+
+.waze-btn-light:hover {
+  background-color: var(--waze-border);
+}
+
+.waze-btn-block {
+  display: flex;
+  width: 100%;
+}
+
+.waze-btn-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ---------- Alertes et messages ---------- */
+.waze-alert {
+  padding: 16px;
+  border-radius: 12px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.waze-alert-success {
+  background-color: rgba(9, 207, 131, 0.1);
+  border: 1px solid rgba(9, 207, 131, 0.3);
+  color: var(--waze-green);
+}
+
+.waze-alert-error {
+  background-color: rgba(255, 102, 127, 0.1);
+  border: 1px solid rgba(255, 102, 127, 0.3);
+  color: var(--waze-red);
+}
+
+.alert-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ---------- Écran de chargement ---------- */
+.waze-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.waze-loading-icon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.waze-loading-car {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--waze-primary);
+  border-radius: 50%;
+  color: var(--waze-white);
+  font-size: 20px;
+  animation: pulse 1.5s infinite;
+}
+
+.waze-loading-road {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 4px dashed var(--waze-border);
+  border-radius: 50%;
+  animation: rotate 5s linear infinite;
+}
+
+.waze-loading-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--waze-primary);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 137, 243, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(74, 137, 243, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 137, 243, 0);
+  }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 576px) {
+  .waze-container {
+    padding: 20px 15px;
+  }
+  
+  .profile-content {
+    padding: 0 20px 20px;
+  }
+  
+  .waze-btn-actions {
+    flex-direction: column;
+  }
+  
+  .waze-tabs {
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+}

@@ -1,0 +1,428 @@
+/* IncidentForm.css - Style inspiré Waze (corrigé pour éviter les coupures) */
+
+.incident-form {
+  background-color: white;
+  border-radius: 16px; /* Plus arrondi style Waze */
+  width: 100%;
+  max-width: 400px; /* Augmenté pour plus d'espace */
+  animation: formAppear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin: 0 auto;
+  overflow: visible; /* Assure que rien n'est coupé */
+}
+
+@keyframes formAppear {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.incident-form h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  position: relative;
+}
+
+.incident-form h2:after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: #4285F4; /* Bleu Waze */
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+.incident-form .coordinates {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.incident-form .form-group {
+  margin-bottom: 20px;
+
+  display: flex
+;
+  
+  flex-direction: column;
+  align-content: center;
+}
+
+.form-group2{
+  width: 90%;
+
+
+}
+.incident-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #444;
+}
+
+.incident-form .incident-types {
+  grid-template-columns: 1fr 1fr; /* Disposition en 2 colonnes fixes */
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Correction pour les incidents avec texte long */
+@media (max-width: 400px) {
+  .incident-form .incident-types {
+    grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+  }
+}
+
+.incident-form .incident-type-btn {
+  width: 100%;
+  min-width: 0; /* Permet de s'adapter à l'espace disponible */
+  border-radius: 12px;
+  padding: 12px 8px; /* Réduire légèrement le padding horizontal */
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Aligne le contenu à gauche */
+  gap: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 1px solid; /* Assurez-vous que la bordure est définie */
+}
+
+.incident-form .incident-type-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.incident-form .incident-type-btn.selected {
+  transform: scale(1.02); /* Légèrement réduit pour éviter débordement */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.incident-form .incident-type-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.incident-form .incident-type-btn span {
+  font-size: 18px;
+  flex-shrink: 0; /* L'icône ne doit pas rétrécir */
+}
+
+.incident-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 15px;
+  resize: vertical;
+  min-height: 80px; /* Légèrement réduit */
+  max-height: 150px; /* Limite la hauteur */
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.incident-form textarea:focus {
+  border-color: #4285F4; /* Bleu Waze */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.25), inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.incident-form textarea::placeholder {
+  color: #aaa;
+}
+
+.incident-form .form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.incident-form button[type="submit"] {
+  flex: 1.5;
+  background-color: #4285F4; /* Vert Waze */
+  color: white;
+  padding: 12px 0; /* Padding vertical uniquement */
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+}
+.incident-form button[type="button"] {
+  outline: 3px solid var(--stroke-color);
+  outline-offset: 2px;
+  border-radius: 50%;
+  transition: outline 0.2s ease;
+}
+.incident-form button[type="submit"]:not(:disabled):hover {
+  background-color: #1303a8da;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.incident-form button[type="submit"]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+.incident-form button[type="button"] {
+  flex: 1 1;
+  /* background-color: #FF453A; */
+  color: white;
+  padding: 12px 0;
+  border: none;
+  border-radius: 19px;
+  height: 70px;
+  /* width: 68px; */
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+}
+
+
+
+.error-message {
+  background-color: #FFE8E8;
+  border-left: 3px solid #FF453A;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+  40%, 60% { transform: translate3d(3px, 0, 0); }
+}
+
+/* Message d'erreur d'authentification */
+.incident-form > div:last-child {
+  margin-top: 25px;
+  text-align: center;
+  padding: 15px;
+  background-color: #FFEEEE;
+  border-radius: 12px;
+  color: #FF453A;
+  font-weight: 500;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.incident-form > div:last-child:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #FF453A;
+}
+
+.incident-type-btn img.incident-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Style des boutons d'incident en icônes circulaires */
+.incident-type-btn {
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.incident-type-btn.selected {
+  border-color: currentColor;
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+}
+
+/* Icônes dans les cercles */
+.incident-icon-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.incident-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.incident-type-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: white;
+  border: 3px solid #ccc;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  outline: none;
+}
+.incident-type-circle:hover {
+  background-color: transparent;
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Icône centrée */
+.incident-icon-only {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid white;
+  box-shadow:
+    0 0 6px white,
+    0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 6px var(--selected-color),
+      0 0 12px var(--selected-color),
+      0 0 18px var(--selected-color),
+      0 0 24px var(--selected-color);
+  }
+  50% {
+    box-shadow:
+      0 0 10px var(--selected-color),
+      0 0 18px var(--selected-color),
+      0 0 28px var(--selected-color),
+      0 0 36px var(--selected-color);
+  }
+}
+
+.incident-type-circle.selected {
+  border-color: var(--selected-color);
+  animation: neonPulse 1.5s infinite ease-in-out;
+}
+
+
+.incident-type-circle.selected {
+  border-color: var(--selected-color);
+  box-shadow:
+    0 0 6px var(--selected-color),
+    0 0 12px var(--selected-color),
+    0 0 18px var(--selected-color),
+    0 0 24px var(--selected-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.incident-icon-only {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+/* Mode sombre */
+body.dark-mode .incident-form {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .incident-form h2 {
+  color: #fff;
+}
+
+body.dark-mode .incident-form h2:after {
+  background-color: #2ecc71;
+}
+
+body.dark-mode .incident-form .coordinates {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark-mode .incident-form .form-group2 {
+color: white;
+}
+
+body.dark-mode .incident-form .form-group label {
+  color: #ccc;
+}
+
+body.dark-mode .incident-form .incident-type-btn {
+  background-color: #555;
+  color: white;
+  border: 1px solid #444;
+}
+
+body.dark-mode .incident-form .incident-type-btn:hover {
+  background-color: #666;
+}
+
+body.dark-mode .incident-form textarea {
+  background-color: #444;
+  color: #fff;
+  border-color: #555;
+}
+
+body.dark-mode .incident-form button[type="submit"] {
+  background-color: #2ecc71;
+  color: white;
+}
+
+body.dark-mode .incident-form button[type="button"] {
+  background-color: #555;
+  color: white;
+}
+
+body.dark-mode .incident-form .error-message {
+  background-color: #e74c3c;
+  color: white;
+  border-left: 5px solid #FF453A;
+}
+
+body.dark-mode .incident-form > div:last-child {
+  background-color: #e74c3c;
+  color: white;
+}
+body.dark-mode .form-container {
+  background-color: #333;
+  
+}
